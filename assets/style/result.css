@@ -1,0 +1,134 @@
+body {
+    height: 100vh;
+}
+
+.result {
+    background-color: aquamarine;
+    background: url(../imgs/sunny.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.result::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .3;
+    z-index: 0;
+
+}
+
+.result .home-icone {
+    width: 25px;
+    left: 20px;
+    top: 20px;
+}
+
+.result .weather-infos {
+    height: 70%;
+    width: fit-content;
+}
+
+.result .weather-infos .city-name {
+    font-size: 9rem;
+}
+
+.result .weather-infos .city-name span {
+    font-size: 1.5rem;
+}
+
+.result .weather-infos .temp {
+    font-size: 3rem;
+}
+
+.result .weather-infos .temp img {
+    width: 80px;
+    height: 50px;
+}
+
+
+.result .next-days-weather {
+    height: 30%;
+    background-color: rgba(255, 255, 255, .2);
+    z-index: 2;
+}
+
+.result .next-days-weather .next-day img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .result .weather-infos {
+        height: 75%;
+    }
+
+    .result .weather-infos .city-name {
+        font-size: 3rem;
+    }
+
+    .result .weather-infos .temp {
+        font-size: 1.5rem;
+    }
+
+    .result .weather-infos .temp img {
+        width: 90px;
+    }
+
+    .result .weather-infos .weather-description {
+        font-size: 1.2rem !important;
+    }
+
+    .result .weather-infos .min-max-temp p,
+    .result .weather-infos .humidity,
+    .result .weather-infos .wind p {
+        font-size: 1rem !important;
+    }
+
+    .result .next-days-weather {
+        overflow-x: scroll;
+        height: 25%;
+    }
+
+    .result .next-days-weather .next-day .date {
+        font-size: 14px !important;
+    }
+
+    .result .next-days-weather .next-day img {
+        width: 70px;
+    }
+
+    .result .next-days-weather .next-day .temp {
+        font-size: 15px !important;
+    }
+
+    .result .next-days-weather .next-day .weather-description {
+        font-size: 13px !important;
+    }
+
+    .result .scroll-msg {
+        display: block !important;
+        bottom: 0px;
+        font-size: 10px;
+        left: 50%;
+        translate: -50%;
+        z-index: 2;
+        animation: show 1s alternate infinite;
+    }
+
+    @keyframes show {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}

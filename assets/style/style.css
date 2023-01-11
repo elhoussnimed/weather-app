@@ -1,0 +1,47 @@
+body {
+    height: 100vh;
+    background-color: rgb(39, 39, 96);
+    background: url(../imgs/bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    position: relative;
+}
+
+.search .title {
+    letter-spacing: 2px;
+    font-size: 3rem;
+}
+
+.form .country:focus,
+.form .city:focus {
+    outline: none;
+}
+
+.form .location img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.form .btn {
+    background-color: #3949ab;
+    color: white;
+    border: none !important;
+    transition: .3s all ease-out;
+}
+
+.form .btn:active {
+    background-color: #3949ab;
+    scale: .98;
+}
+
+@media (max-width: 768px) {
+    .search .title {
+        font-size: 2rem;
+    }
+
+    .form {
+        width: 90% !important;
+    }
+}
