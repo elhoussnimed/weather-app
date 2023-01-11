@@ -1,13 +1,12 @@
 const { latitudePosition, longitudePosition } = JSON.parse(
   localStorage.getItem("coords")
 );
+
+const resultContainer = document.querySelector(".result");
 const weatherInfosContainer = document.querySelector(".result .weather-infos");
 const nextDaysWeatherContainer = document.querySelector(
   ".result .next-days-weather"
 );
-const homeIcone = document.querySelector(".result .home-icone");
-
-homeIcone.addEventListener("click", (location.href = "index.html"));
 
 async function getCurrentWeather() {
   const response = await fetch(
@@ -36,6 +35,21 @@ async function appendData(data) {
   }
   date = `${date.getDate()}-${month}-${date.getFullYear()}`;
 
+  // change result background
+  if (main === "Clouds") {
+    resultContainer.style.cssText = `background: url(./assets/imgs/cloudy.jpg) !important`;
+  } else if (main === "Clear") {
+    resultContainer.style.cssText = `background: url(./assets/imgs/sunny.jpg) !important`;
+  } else if (main === "Snow") {
+    resultContainer.style.cssText = `background: url(./assets/imgs/snowy.jpg) !important`;
+  } else if (main === "Rain") {
+    resultContainer.style.cssText = `background: url(./assets/imgs/rainy.jpg) !important`;
+  } else if (main === "Thunderstorm") {
+    resultContainer.style.cssText = `background: url(./assets/imgs/thunder.jpg) !important`;
+  } else {
+    resultContainer.style.cssText = `background: url(./assets/imgs/bg.jpg) !important`;
+  }
+
   // get countries list
   const response = await fetch("https://restcountries.com/v3.1/all");
   const countries = await response.json();
@@ -56,15 +70,17 @@ async function appendData(data) {
 
   const todayWeather = `
         <p class="date mb-0 fs-3 fw-medium">${date}</p>
-        <h1 class="city-name text-capitalize mb-0">${name},<span>${selectedCountry[0].name}</span></h1>
+        <h1 class="city-name text-capitalize mb-0">${name},<span>${
+    selectedCountry[0].name
+  }</span></h1>
         <div class="temp d-flex align-items-center">
-            <p class="mb-0 fw-medium">${temp}°C</p>
+            <p class="mb-0 fw-medium">${temp.toFixed()}°C</p>
             <img src="./assets/imgs/weather-icons/${main}.svg" class="object-fit-cover" alt="weather icone">
         </div>
         <p class="weather-description mb-0 fs-4 fs-md-5 text-capitalize fw-medium">${description}</p>
         <div class="min-max-temp d-flex gap-2">
-            <p class="mb-0 fs-6 text-capitalize fw-medium">min temp: ${temp_min}°C</p>
-            <p class="mb-0 fs-6 text-capitalize fw-medium">max temp: ${temp_max}°C</p>
+            <p class="mb-0 fs-6 text-capitalize fw-medium">min temp: ${temp_min.toFixed()}°C</p>
+            <p class="mb-0 fs-6 text-capitalize fw-medium">max temp: ${temp_max.toFixed()}°C</p>
         </div>
         <p class="humidity mb-0 fs-6 text-capitalize fw-medium">humidity : ${humidity}%</p>
         <div class="wind">
@@ -88,8 +104,6 @@ async function append5DaysWeatherData() {
     return day.dt_txt.match(regEx);
   });
 
-  console.log(selectedDays);
-
   // append next 4 days weather to the DOM
   selectedDays.forEach((day) => {
     const {
@@ -110,7 +124,7 @@ async function append5DaysWeatherData() {
     <div class="next-day h-100 p-2 col-6 col-md-3 text-center">
         <p class="date fs-3">${date}</p>
         <img src="./assets/imgs/weather-icons/${main}.svg" class="d-block mx-auto" alt="weather icone">
-        <p class="temp fs-4 mb-0">${temp}° C</p>
+        <p class="temp fs-4 mb-0">${temp.toFixed()}° C</p>
         <p class="weather-description text-capitalize fs-5">${description}</p>
     </div>
     `;
@@ -119,3 +133,12 @@ async function append5DaysWeatherData() {
 }
 
 append5DaysWeatherData();
+
+// hide scroll msg
+if (window.innerWidth < 768) {
+  console.log(true);
+  const scrollMsg = document.querySelector(".result .scroll-msg");
+  nextDaysWeatherContainer.addEventListener("scroll", (e) => {
+    scrollMsg.style.cssText = "display: none !important";
+  });
+}

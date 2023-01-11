@@ -1,6 +1,8 @@
 const countriesContainer = document.querySelector(".search .form .country");
 const searchBtn = document.querySelector(".search .form .btn");
 const locationIcon = document.querySelector(".search .form .location img");
+const cityNameInput = document.querySelector(".search .form .city");
+const countrySelect = document.querySelector(".search .form .country");
 
 // get countries list
 async function getCountries() {
@@ -32,7 +34,7 @@ getCountries();
 // get geolocalisation
 function getLocalisation() {
   navigator.geolocation.getCurrentPosition(succes, error);
-
+  localStorage.clear();
   // callback function for geolocalisation function in succes
   function succes(position) {
     const { latitude, longitude } = position.coords;
@@ -55,14 +57,15 @@ function getLocalisation() {
 // get city name and country code
 let cityName;
 let countryCode;
+
 function getCity() {
-  const cityNameInput = document.querySelector(".search .form .city");
   cityName = cityNameInput.value;
-  cityNameInput.value = "";
+  if (cityNameInput.value === "") {
+    alert("please enter a city name!");
+  }
 }
 
 function getCountry() {
-  const countrySelect = document.querySelector(".search .form .country");
   const allCountries = [
     ...document.querySelectorAll(".search .form .country option"),
   ];
@@ -91,14 +94,22 @@ async function getLatAndLongByCityName() {
 }
 
 searchBtn.addEventListener("click", () => {
-  getCity();
+  localStorage.clear();
   getCountry();
+  getCity();
   getLatAndLongByCityName();
-  location.href = "result.html";
+  if (cityNameInput.value.length > 2) {
+    setTimeout(() => {
+      location.href = "result.html";
+    }, 100);
+  }
 });
 
 // get lat and long by clicking on location icone
 locationIcon.addEventListener("click", () => {
+  localStorage.clear();
   getLocalisation();
-  location.href = "result.html";
+  setTimeout(() => {
+    location.href = "result.html";
+  }, 100);
 });

@@ -16,16 +16,18 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- app js  -->
-    <script src="./assets/script/result.js" defer></script>
+    <script src="./assets/script/result.js" type="module" defer></script>
 </head>
 
 <body>
     <div class="result h-100 w-100 container-fluid position-relative px-0 overflow-hidden">
-        <a href="index.html"><img src="./assets/imgs/home.svg" class="home-icone position-absolute z-2"
+        <a href="index.html" class="home-icone position-absolute z-2"><img src="./assets/imgs/home.svg"
                 alt="icone to go to home page" title="Home Page">
         </a>
         <div class="weather-infos position-relative mx-auto px-2 z-2 d-flex flex-column justify-content-center"></div>
-        <div class="next-days-weather row w-100 ms-0 position-absolute bottom-0 d-flex justify-content-md-center flex-nowrap"></div>
+        <div
+            class="next-days-weather row w-100 ms-0 position-absolute bottom-0 d-flex justify-content-md-center flex-nowrap">
+        </div>
         <p class="scroll-msg text-capitalize text-center position-absolute d-none">scroll to see more</p>
     </div>
 </body>
