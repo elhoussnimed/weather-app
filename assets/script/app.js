@@ -143,7 +143,7 @@ async function append5DaysWeatherData(lat, lon) {
       weather,
       main: { temp },
     } = day;
-    const { description, main, icon } = weather[0];
+    const { description, icon } = weather[0];
     let date = new Date(dt_txt);
     let month = date.getMonth() + 1;
     if (month < 10) {
@@ -151,12 +151,10 @@ async function append5DaysWeatherData(lat, lon) {
     }
     date = `${date.getDate()}-${month}-${date.getFullYear()}`;
 
-    const iconSrc = `http://openweathermap.org/img/w/${icon}.png`;
-
     const dayWeather = `
       <div class="next-day h-100 p-2 col-6 col-md-3 text-center">
           <p class="date fs-3">${date}</p>
-          <img src="${iconSrc}" class="d-block mx-auto" alt="weather icone">
+          <img src="http://openweathermap.org/img/w/${icon}.png" class="d-block mx-auto" alt="weather icone">
           <p class="temp fs-4 mb-0">${temp.toFixed()}° C</p>
           <p class="weather-description text-capitalize fs-5">${description}</p>
       </div>
@@ -173,7 +171,7 @@ function appendData(data) {
     wind: { deg, speed },
     weather,
   } = data;
-  const { main, description,icon} = weather[0];
+  const { main, description, icon } = weather[0];
   // get date
   let date = new Date();
   let month = date.getMonth() + 1;
@@ -217,8 +215,6 @@ function appendData(data) {
         main = "Not-available";
       }
 
-      const iconSrc = `http://openweathermap.org/img/w/${icon}.png`;
-
       const todayWeather = `
             <p class="date mb-0 fs-3 fw-medium">${date}</p>
             <h1 class="city-name text-capitalize mb-0">${name},<span>${
@@ -226,7 +222,7 @@ function appendData(data) {
       }</span></h1>
             <div class="temp d-flex align-items-center">
                 <p class="mb-0 fw-medium">${temp.toFixed()}°C</p>
-                <img src="${iconSrc}" class="object-fit-cover" alt="weather icone">
+                <img src="http://openweathermap.org/img/w/${icon}.png" class="object-fit-cover" alt="weather icone">
             </div>
             <p class="weather-description mb-0 fs-4 fs-md-5 text-capitalize fw-medium">${description}</p>
             <div class="min-max-temp d-flex gap-2">
