@@ -144,7 +144,6 @@ async function append5DaysWeatherData(lat, lon) {
       main: { temp },
     } = day;
     const { description, main } = weather[0];
-
     let date = new Date(dt_txt);
     let month = date.getMonth() + 1;
     if (month < 10) {
@@ -213,7 +212,7 @@ function appendData(data) {
 
       // set icon to not available if :
       if (main === "Sand" || main === "Ash" || main === "Squale") {
-        main = "not-available";
+        main = "Not-available";
       }
 
       const todayWeather = `
