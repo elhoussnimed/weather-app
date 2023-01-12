@@ -16,13 +16,13 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- app js  -->
-    <script src="./assets/script/app.js" type="module" defer></script>
+    <script src="./assets/script/app.js" defer></script>
 </head>
 
 <body>
     <div class="overlay position-absolute w-100 h-100 bg-dark opacity-50"></div>
     <div
-        class="search position-relative container-fluid h-100 d-flex align-items-center justify-content-center flex-column gap-3">
+        class="search d-block position-relative container-fluid h-100 d-flex align-items-center justify-content-center flex-column gap-3">
         <h1 class="title text-capitalize fw-bold">weather app</h1>
         <p class="text-capitalize fs-4 fw-medium">search by city name :</p>
         <form class="form w-25">
@@ -37,6 +37,16 @@
             </div>
             <button type="button" class="btn d-block w-100 p-2 rounded-2 text-capitalize fs-5 fw-bold">search</button>
         </form>
+    </div>
+    <div class="result d-none h-100 w-100 container-fluid position-relative px-0 overflow-hidden">
+        <a href="index.html" class="home-icone position-absolute z-2"><img src="./assets/imgs/home.svg"
+                alt="icone to go to home page" title="Home Page">
+        </a>
+        <div class="weather-infos position-relative mx-auto px-2 z-2 d-flex flex-column justify-content-center"></div>
+        <div
+            class="next-days-weather row w-100 ms-0 position-absolute bottom-0 d-flex justify-content-md-center flex-nowrap">
+        </div>
+        <p class="scroll-msg text-capitalize text-center position-absolute d-none">scroll to see more</p>
     </div>
 </body>
 
