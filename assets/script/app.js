@@ -154,7 +154,7 @@ async function append5DaysWeatherData(lat, lon) {
     const dayWeather = `
       <div class="next-day h-100 p-2 col-6 col-md-3 text-center">
           <p class="date fs-3">${date}</p>
-          <img src="./assets/imgs/weather-icons/${main}.svg" class="d-block mx-auto" alt="weather icone">
+          <img src="../assets/imgs/weather-icons/${main}.svg" class="d-block mx-auto" alt="weather icone">
           <p class="temp fs-4 mb-0">${temp.toFixed()}° C</p>
           <p class="weather-description text-capitalize fs-5">${description}</p>
       </div>
@@ -222,7 +222,7 @@ function appendData(data) {
       }</span></h1>
             <div class="temp d-flex align-items-center">
                 <p class="mb-0 fw-medium">${temp.toFixed()}°C</p>
-                <img src="./assets/imgs/weather-icons/${main}.svg" class="object-fit-cover" alt="weather icone">
+                <img src="../assets/imgs/weather-icons/${main}.svg" class="object-fit-cover" alt="weather icone">
             </div>
             <p class="weather-description mb-0 fs-4 fs-md-5 text-capitalize fw-medium">${description}</p>
             <div class="min-max-temp d-flex gap-2">
