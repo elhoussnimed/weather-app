@@ -143,7 +143,7 @@ async function append5DaysWeatherData(lat, lon) {
       weather,
       main: { temp },
     } = day;
-    const { description, main } = weather[0];
+    const { description, main, icon } = weather[0];
     let date = new Date(dt_txt);
     let month = date.getMonth() + 1;
     if (month < 10) {
@@ -151,7 +151,7 @@ async function append5DaysWeatherData(lat, lon) {
     }
     date = `${date.getDate()}-${month}-${date.getFullYear()}`;
 
-    const iconSrc = `./assets/imgs/weather-icons/Clouds.svg`;
+    const iconSrc = `http://openweathermap.org/img/w/${icon}.png`;
 
     const dayWeather = `
       <div class="next-day h-100 p-2 col-6 col-md-3 text-center">
@@ -173,7 +173,7 @@ function appendData(data) {
     wind: { deg, speed },
     weather,
   } = data;
-  const { main, description } = weather[0];
+  const { main, description,icon} = weather[0];
   // get date
   let date = new Date();
   let month = date.getMonth() + 1;
@@ -217,7 +217,7 @@ function appendData(data) {
         main = "Not-available";
       }
 
-      const iconSrc = `./assets/imgs/weather-icons/Clouds.svg`;
+      const iconSrc = `http://openweathermap.org/img/w/${icon}.png`;
 
       const todayWeather = `
             <p class="date mb-0 fs-3 fw-medium">${date}</p>
