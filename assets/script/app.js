@@ -151,10 +151,12 @@ async function append5DaysWeatherData(lat, lon) {
     }
     date = `${date.getDate()}-${month}-${date.getFullYear()}`;
 
+    const iconSrc = `../assets/imgs/weather-icons/${main}.svg`
+
     const dayWeather = `
       <div class="next-day h-100 p-2 col-6 col-md-3 text-center">
           <p class="date fs-3">${date}</p>
-          <img src="../assets/imgs/weather-icons/${main}.svg" class="d-block mx-auto" alt="weather icone">
+          <img src="${iconSrc}" class="d-block mx-auto" alt="weather icone">
           <p class="temp fs-4 mb-0">${temp.toFixed()}° C</p>
           <p class="weather-description text-capitalize fs-5">${description}</p>
       </div>
@@ -215,14 +217,14 @@ function appendData(data) {
         main = "Not-available";
       }
 
+      const iconSrc = `../assets/imgs/weather-icons/${main}.svg`
+
       const todayWeather = `
             <p class="date mb-0 fs-3 fw-medium">${date}</p>
-            <h1 class="city-name text-capitalize mb-0">${name},<span>${
-        selectedCountry[0].name
-      }</span></h1>
+            <h1 class="city-name text-capitalize mb-0">${name},<span>${selectedCountry[0].name}</span></h1>
             <div class="temp d-flex align-items-center">
                 <p class="mb-0 fw-medium">${temp.toFixed()}°C</p>
-                <img src="../assets/imgs/weather-icons/${main}.svg" class="object-fit-cover" alt="weather icone">
+                <img src="${iconSrc}" class="object-fit-cover" alt="weather icone">
             </div>
             <p class="weather-description mb-0 fs-4 fs-md-5 text-capitalize fw-medium">${description}</p>
             <div class="min-max-temp d-flex gap-2">
